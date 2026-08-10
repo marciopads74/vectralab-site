@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planejamento Nutricional Mensal — Agosto/Setembro 2026</title>
+<style>
+  :root {
+    --bg: #f6f5f0;
+    --bg-card: #ffffff;
+    --text: #24291f;
+    --text-muted: #5c6357;
+    --accent: #3f6e4e;
+    --accent-soft: #e7f0e5;
+    --border: #dfe2d8;
+    --table-head: #3f6e4e;
+    --table-head-text: #ffffff;
+    --row-alt: #f3f6f0;
+    --tag-bg: #eef1e6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1b1e18;
+      --bg-card: #23271f;
+      --text: #e9ebe3;
+      --text-muted: #a9b09e;
+      --accent: #7fb894;
+      --accent-soft: #26332a;
+      --border: #343a2e;
+      --table-head: #2c4a37;
+      --table-head-text: #eafaf0;
+      --row-alt: #20241c;
+      --tag-bg: #2a3024;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    padding: 32px 16px 64px;
+  }
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  header.page-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  header.page-header h1 {
+    font-size: 1.9rem;
+    margin: 0 0 6px;
+    color: var(--accent);
+  }
+  header.page-header p.subtitle {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+  .meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.82rem;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+  .notice {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 24px 0 36px;
+  }
+  .notice strong { color: var(--text); }
+  nav.week-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  nav.week-nav a {
+    text-decoration: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+  section.week {
+    margin-bottom: 48px;
+    scroll-margin-top: 20px;
+  }
+  section.week h2 {
+    font-size: 1.3rem;
+    color: var(--accent);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+  }
+  section.week h2 span.range {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-card);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;
+  }
+  thead th {
+    background: var(--table-head);
+    color: var(--table-head-text);
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  tbody td {
+    padding: 12px 14px;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+  tbody td:first-child {
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  tbody tr:nth-child(even) {
+    background: var(--row-alt);
+  }
+  .tip {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    padding-left: 4px;
+  }
+  section.shopping {
+    margin-top: 56px;
+  }
+  section.shopping h2 {
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  section.shopping > p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .shop-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .shop-card h3 {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .shop-card h3 .badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .shop-card ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.88rem;
+  }
+  .shop-card li { margin-bottom: 6px; }
+  .shop-card li span.qty {
+    color: var(--text-muted);
+  }
+  footer {
+    margin-top: 56px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  @media print {
+    body { background: #fff; color: #000; padding: 0; }
+    nav.week-nav { display: none; }
+    section.week { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-header">
+    <h1>Planejamento Nutricional Mensal</h1>
+    <p class="subtitle">11 de agosto a 05 de setembro de 2026 · 4 semanas (dias úteis)</p>
+    <div class="meta-tags">
+      <span class="tag">Objetivo: perda de peso preservando massa muscular</span>
+      <span class="tag">Proteínas: frango, carne moída, carne de porco, ovos</span>
+      <span class="tag">Sem peixe</span>
+      <span class="tag">Foco: praticidade e orçamento</span>
+    </div>
+  </header>
+
+  <div class="notice">
+    <strong>Nota:</strong> este é um plano prático de refeições, não uma prescrição nutricional. Não substitui o acompanhamento de um(a) nutricionista — especialmente importante para calibrar porções e preservar massa magra durante o déficit calórico. Ajuste as quantidades conforme fome, energia e evolução de peso.
+  </div>
+
+  <nav class="week-nav">
+    <a href="#semana1">Semana 1 · 11–15/08</a>
+    <a href="#semana2">Semana 2 · 18–22/08</a>
+    <a href="#semana3">Semana 3 · 25–29/08</a>
+    <a href="#semana4">Semana 4 · 01–05/09</a>
+    <a href="#compras">Lista de compras</a>
+  </nav>
+
+  <!-- SEMANA 1 -->
+  <section class="week" id="semana1">
+    <h2>Semana 1 <span class="range">11 a 15 de agosto</span></h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dia</th><th>Café</th><th>Almoço</th><th>Jantar</th></tr></thead>
+        <tbody>
+          <tr><td>Segunda</td><td>Ovos mexidos (2) + pão integral + banana</td><td>Peito de frango grelhado + arroz integral + feijão + salada (alface, tomate, pepino)</td><td>Omelete de legumes (cenoura e abobrinha ralada)</td></tr>
+          <tr><td>Terça</td><td>Ovos cozidos + pão integral + mamão</td><td>Carne moída refogada com abobrinha + arroz integral + feijão</td><td>Frango desfiado (sobra de segunda) com legumes salteados</td></tr>
+          <tr><td>Quarta</td><td>Omelete simples (2 ovos) + pão integral + banana</td><td>Lombo de porco assado + arroz integral + feijão + brócolis refogado</td><td>Sopa de legumes com carne moída</td></tr>
+          <tr><td>Quinta</td><td>Ovos mexidos + pão integral + maçã</td><td>Sobrecoxa de frango grelhada (sem pele) + purê de batata doce + salada de repolho</td><td>Ovos mexidos com legumes (abobrinha, tomate) + salada verde</td></tr>
+          <tr><td>Sexta</td><td>Ovos cozidos + pão integral + banana</td><td>Carne moída com legumes (cenoura, ervilha) + arroz integral + feijão</td><td>Lombo de porco fatiado (sobra de quarta) com salada verde</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tip">Dica: grelhe frango a mais na segunda para render o desfiado de terça; asse o lombo inteiro na quarta para render a sexta à noite.</p>
+  </section>
+
+  <!-- SEMANA 2 -->
+  <section class="week" id="semana2">
+    <h2>Semana 2 <span class="range">18 a 22 de agosto</span></h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dia</th><th>Café</th><th>Almoço</th><th>Jantar</th></tr></thead>
+        <tbody>
+          <tr><td>Segunda</td><td>Omelete com espinafre + pão integral + mamão</td><td>Lombo de porco grelhado em fatias + arroz integral + feijão + salada de rúcula e tomate</td><td>Frango ao molho de tomate com abobrinha</td></tr>
+          <tr><td>Terça</td><td>Ovos cozidos + tapioca + banana</td><td>Frango xadrez caseiro (frango, pimentão e cebola) + arroz integral</td><td>Carne moída com legumes no vapor (couve-flor e cenoura)</td></tr>
+          <tr><td>Quarta</td><td>Ovos mexidos + pão integral + maçã</td><td>Carne moída ao molho com berinjela + arroz integral + feijão</td><td>Omelete com carne moída desfiada (sobra) e legumes</td></tr>
+          <tr><td>Quinta</td><td>Vitamina de banana com aveia + ovo cozido</td><td>Lombo de porco ao forno com batata doce + salada verde</td><td>Frango desfiado com legumes salteados (couve e cenoura)</td></tr>
+          <tr><td>Sexta</td><td>Ovos cozidos + pão integral + fruta da estação</td><td>Frango grelhado + arroz integral + feijão + salada</td><td>Omelete simples com legumes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tip">Dica: aproveite o lombo grelhado da segunda em tirinhas frias na salada de sexta, se sobrar.</p>
+  </section>
+
+  <!-- SEMANA 3 -->
+  <section class="week" id="semana3">
+    <h2>Semana 3 <span class="range">25 a 29 de agosto</span></h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dia</th><th>Café</th><th>Almoço</th><th>Jantar</th></tr></thead>
+        <tbody>
+          <tr><td>Segunda</td><td>Omelete simples + pão integral + banana</td><td>Carne moída com abóbora + arroz integral + feijão</td><td>Frango ao curry leve com legumes</td></tr>
+          <tr><td>Terça</td><td>Ovos cozidos + tapioca + mamão</td><td>Lombo de porco grelhado + purê de batata doce + salada</td><td>Carne moída refogada com repolho</td></tr>
+          <tr><td>Quarta</td><td>Ovos mexidos + pão integral + maçã</td><td>Frango assado com ervas + arroz integral + feijão + salada</td><td>Sopa de legumes com carne moída</td></tr>
+          <tr><td>Quinta</td><td>Omelete + fruta da estação</td><td>Carne de porco em cubos refogada com pimentão + arroz integral</td><td>Frango desfiado com salada de folhas</td></tr>
+          <tr><td>Sexta</td><td>Ovos cozidos + pão integral + banana</td><td>Frango grelhado com legumes + arroz integral + feijão</td><td>Omelete com legumes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tip">Dica: use o frango assado de quarta desfiado na quinta se preferir economizar tempo de preparo.</p>
+  </section>
+
+  <!-- SEMANA 4 -->
+  <section class="week" id="semana4">
+    <h2>Semana 4 <span class="range">01 a 05 de setembro</span></h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dia</th><th>Café</th><th>Almoço</th><th>Jantar</th></tr></thead>
+        <tbody>
+          <tr><td>Segunda</td><td>Ovos mexidos + pão integral + fruta da estação</td><td>Carne de porco assada + arroz integral + feijão + salada</td><td>Frango com legumes salteados</td></tr>
+          <tr><td>Terça</td><td>Omelete + banana</td><td>Frango ao molho de tomate + arroz integral + feijão</td><td>Carne moída com abobrinha</td></tr>
+          <tr><td>Quarta</td><td>Ovos cozidos + pão integral + maçã</td><td>Carne moída com legumes variados + arroz integral + feijão</td><td>Sopa de frango com legumes</td></tr>
+          <tr><td>Quinta</td><td>Ovos mexidos + tapioca + mamão</td><td>Lombo de porco grelhado + salada + arroz integral</td><td>Omelete com carne moída (sobra)</td></tr>
+          <tr><td>Sexta</td><td>Ovos cozidos + pão integral + banana</td><td>Frango grelhado + arroz integral + feijão + salada</td><td>Legumes salteados com ovos</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tip">Fim do mês: reveja como o corpo respondeu (peso, energia, treinos) antes de repetir o ciclo em setembro.</p>
+  </section>
+
+  <!-- COMPRAS -->
+  <section class="shopping" id="compras">
+    <h2>Lista de compras do mês</h2>
+    <p>Proteínas e mercearia rendem o mês todo (dá pra congelar em porções). Hortifruti é perecível — repita a compra a cada semana em vez de comprar tudo de uma vez.</p>
+    <div class="shop-grid">
+      <div class="shop-card">
+        <h3>Proteínas <span class="badge">mensal · pode congelar</span></h3>
+        <ul>
+          <li>Ovos <span class="qty">— 5 a 6 dúzias no mês (reponha a cada 1–2 semanas)</span></li>
+          <li>Peito de frango <span class="qty">— cerca de 2 kg</span></li>
+          <li>Sobrecoxa de frango sem pele <span class="qty">— cerca de 1,2 kg</span></li>
+          <li>Carne moída (patinho ou acém) <span class="qty">— cerca de 1,8 kg</span></li>
+          <li>Lombo suíno <span class="qty">— cerca de 1,6 kg</span></li>
+        </ul>
+      </div>
+      <div class="shop-card">
+        <h3>Mercearia <span class="badge">mensal</span></h3>
+        <ul>
+          <li>Arroz integral <span class="qty">— 2 pacotes (1 kg cada)</span></li>
+          <li>Feijão <span class="qty">— 2 pacotes (1 kg cada)</span></li>
+          <li>Pão integral <span class="qty">— repor a cada semana</span></li>
+          <li>Tapioca (goma) <span class="qty">— 1 pacote</span></li>
+          <li>Aveia <span class="qty">— 1 pacote</span></li>
+          <li>Azeite, sal e temperos básicos <span class="qty">— conforme estoque em casa</span></li>
+        </ul>
+      </div>
+      <div class="shop-card">
+        <h3>Hortifruti <span class="badge">repetir 4x — 1x por semana</span></h3>
+        <ul>
+          <li>Banana, mamão, maçã <span class="qty">— fruta variada da semana</span></li>
+          <li>Alface, rúcula ou folhas verdes <span class="qty">— 1 pé/maço</span></li>
+          <li>Tomate <span class="qty">— 4 unidades</span></li>
+          <li>Pepino <span class="qty">— 1 unidade</span></li>
+          <li>Cenoura <span class="qty">— 4 unidades</span></li>
+          <li>Abobrinha <span class="qty">— 3 unidades</span></li>
+          <li>Brócolis ou couve-flor <span class="qty">— 1 unidade</span></li>
+          <li>Repolho <span class="qty">— 1/2 unidade</span></li>
+          <li>Batata doce <span class="qty">— 4 unidades médias</span></li>
+          <li>Pimentão, berinjela, espinafre/couve <span class="qty">— conforme a semana</span></li>
+          <li>Cebola e alho <span class="qty">— repor conforme uso</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Planejamento gerado como apoio prático — não substitui orientação profissional de nutrição.
+  </footer>
+
+</div>
+</body>
+</html>
