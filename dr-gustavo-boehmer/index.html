@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Reformulação Estratégica — Dr. Gustavo Boehmer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Lato:wght@400;700&family=Playfair+Display:wght@500;600&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -180,9 +183,31 @@
 
   /* visual concept */
   .swatch-row { display: flex; gap: 10px; margin: 26px 0; max-width: 460px; }
-  .swatch { flex: 1; height: 64px; border-radius: 10px; }
+  .swatch-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .swatch { width: 100%; height: 64px; border-radius: 10px; }
+  .swatch-label { font-family: var(--sans); font-size: 11px; color: var(--ink-soft); text-align: center; line-height: 1.4; }
+  .swatch-label .hex { display: block; font-size: 10.5px; color: var(--ink); letter-spacing: 0.02em; }
+  .font-playfair { font-family: 'Playfair Display', serif; }
+  .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+  .font-lato { font-family: 'Lato', sans-serif; }
+  .font-worksans { font-family: 'Work Sans', sans-serif; }
+
+  .type-pairs { display: flex; flex-direction: column; gap: 18px; margin-top: 10px; }
+  .type-pair { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+  .type-pair .option-lbl { font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
+  .type-sample { margin: 4px 0; }
+  .type-sample .display { font-size: 21px; color: var(--navy-dark); }
+  .type-sample .body { font-size: 14px; color: var(--ink); margin-top: 5px; }
   .visual-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 10px; }
   @media (max-width: 720px) { .visual-cols { grid-template-columns: 1fr; } }
+
+  .gradient-row { display: flex; gap: 16px; margin-top: 30px; flex-wrap: wrap; }
+  .gradient-item { flex: 1 1 200px; max-width: 230px; display: flex; flex-direction: column; gap: 10px; }
+  .gradient-swatch { height: 72px; border-radius: 10px; border: 1px solid var(--line); }
+  .gradient-label { font-family: var(--sans); font-size: 11.5px; color: var(--ink-soft); line-height: 1.5; }
+  .gradient-label .name { display: block; font-weight: 700; color: var(--navy-dark); font-size: 12px; }
+  .gradient-label .use { display: block; margin-top: 2px; }
+  .gradient-label .css { display: block; font-family: 'Courier New', monospace; font-size: 10px; color: var(--ink); margin-top: 6px; word-break: break-all; }
 
   /* narrative steps */
   .narrative-steps { display: flex; flex-direction: column; gap: 0; margin-top: 30px; }
@@ -232,6 +257,125 @@
 
   .section-index { font-family: var(--sans); font-size: 11px; color: var(--gold-dark); letter-spacing: 0.1em; margin-bottom: 10px; }
   .dark .section-index { color: var(--gold); }
+
+  @media print {
+    @page { size: A4 landscape; margin: 8mm 12mm; }
+    html, body { scroll-behavior: auto; background: var(--cream); }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+    .rail, .topbar, .scroll-hint { display: none !important; }
+
+    /* neutralize screen padding on the wrapping section/cover/closing elements */
+    section, .cover, .closing { padding: 0; margin: 0; min-height: 0; }
+
+    /* .page = one printed page, sized to the page and centered. Applied either to the
+       section/cover/closing itself (simple slides) or to inner wrap divs (dense slides
+       split into two pages). */
+    .page {
+      box-sizing: border-box;
+      width: 100%;
+      height: 186mm;
+      min-height: 0;
+      max-height: 186mm;
+      margin: 0 auto;
+      padding: 10mm 16mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      break-after: page;
+      page-break-after: always;
+    }
+    .closing.page { break-after: avoid; page-break-after: avoid; }
+
+    /* compact typography */
+    .cover h1 { font-size: 40px; }
+    .cover .sub { margin-top: 14px; font-size: 13px; max-width: 480px; }
+
+    .eyebrow { margin-bottom: 10px; }
+    .section-index { margin-bottom: 8px; font-size: 10px; }
+    h2 { font-size: 25px; margin-bottom: 12px; }
+    h3 { font-size: 16px; margin-bottom: 8px; }
+    p.lead { font-size: 12.5px; line-height: 1.45; max-width: 720px; }
+    .wrap, .wrap-wide { width: 100%; }
+
+    .quote-block { margin: 14px auto 0; padding: 16px 20px; font-size: 15px; line-height: 1.4; max-width: 680px; box-shadow: none; }
+
+    .stat-row { margin-top: 18px; gap: 10px; }
+    .stat .num { font-size: 22px; }
+    .stat .lbl { font-size: 10px; margin-top: 3px; }
+
+    .insight-grid { margin-top: 16px; gap: 10px; }
+    .insight-card { padding: 12px 14px; }
+    .insight-card .icon { font-size: 17px; margin-bottom: 6px; }
+    .insight-card h4 { font-size: 11px; margin-bottom: 4px; }
+    .insight-card p { font-size: 10.5px; line-height: 1.35; }
+
+    .comp-strip { margin-top: 14px; gap: 6px; }
+    .comp-row { padding: 8px 14px; font-size: 11px; }
+
+    .platform-grid { margin-top: 16px; gap: 8px; }
+    .platform-card { padding: 12px 14px; }
+    .platform-card .lbl { font-size: 9px; margin-bottom: 4px; }
+    .platform-card p { font-size: 11.5px; }
+
+    .persona-grid { margin-top: 18px; gap: 12px; }
+    .persona-head { padding: 10px 16px; }
+    .persona-head h4 { font-size: 15px; }
+    .persona-body { padding: 12px 16px; }
+    .persona-body p { font-size: 11px; margin-bottom: 5px; }
+
+    .shift-list { margin-top: 16px; gap: 7px; }
+    .shift-row { padding: 9px 16px; font-size: 11.5px; }
+
+    .pillars { margin-top: 16px; gap: 10px; }
+    .pillar { padding: 14px 14px; }
+    .pillar .num { font-size: 9px; margin-bottom: 5px; }
+    .pillar h4 { font-size: 13.5px; margin-bottom: 5px; }
+    .pillar p { font-size: 10.5px; }
+
+    .visual-cols { margin-top: 12px; gap: 24px; }
+    .swatch-row { margin: 12px 0; max-width: 360px; }
+    .swatch { height: 40px; }
+    .swatch-label { font-size: 9px; }
+    .swatch-label .hex { font-size: 8.5px; }
+    .type-pairs { margin-top: 8px; gap: 10px; }
+    .type-pair { padding: 10px 14px; }
+    .type-pair .option-lbl { font-size: 9px; margin-bottom: 3px; }
+    .type-sample .display { font-size: 15px; }
+    .type-sample .body { font-size: 11px; margin-top: 3px; }
+    .gradient-row { margin-top: 14px; gap: 10px; }
+    .gradient-swatch { height: 44px; }
+    .gradient-label { font-size: 9.5px; }
+    .gradient-label .name { font-size: 10px; }
+    .gradient-label .css { font-size: 8px; margin-top: 3px; }
+
+    .narrative-steps { margin-top: 14px; }
+    .n-step { padding: 10px 0; gap: 14px; }
+    .n-step .n { font-size: 17px; width: 26px; }
+    .n-step h4 { font-size: 12.5px; margin-bottom: 2px; }
+    .n-step p { font-size: 10.5px; }
+
+    .ig-note { margin-top: 16px; padding: 16px 18px; }
+    .ig-note p.lead { font-size: 12.5px; }
+    .ig-checks { margin-top: 10px; gap: 5px 14px; }
+    .ig-checks div { font-size: 11px; }
+
+    .leave-behind { margin-top: 16px; gap: 6px; }
+    .leave-behind div { padding: 8px 14px; font-size: 11px; }
+
+    .deliv-grid { margin-top: 18px; gap: 12px; }
+    .deliv-card { padding: 16px 16px; gap: 6px; }
+    .deliv-card .num { width: 24px; height: 24px; font-size: 11px; }
+    .deliv-card h4 { font-size: 13.5px; }
+    .deliv-card p { font-size: 10.5px; }
+
+    .closing p.big { font-size: 21px; }
+    .closing .sign { margin-top: 22px; font-size: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -243,14 +387,14 @@
   </div>
 
   <!-- COVER -->
-  <div class="cover">
+  <div class="cover page">
     <h1>Uma nova fase de autoridade<br>para <em>Dr. Gustavo Boehmer</em></h1>
     <div class="sub">Reformulação estratégica de posicionamento e comunicação — site e Instagram — com foco em Mentoplastia, Implantes Faciais, Lipo de Papada e Bichectomia</div>
     <div class="scroll-hint">↓ role para começar</div>
   </div>
 
   <!-- 01 PONTO DE PARTIDA -->
-  <section class="dark">
+  <section class="dark page">
     <div class="wrap center">
       <div class="section-index">01 — PONTO DE PARTIDA</div>
       <h2>A autoridade já existe.<br>Falta o endereço.</h2>
@@ -266,7 +410,7 @@
 
   <!-- 02 PESQUISA -->
   <section>
-    <div class="wrap-wide">
+    <div class="wrap-wide page">
       <div class="section-index">02 — O QUE A PESQUISA MOSTROU</div>
       <h2>Por que este é o momento certo para essa mudança de foco</h2>
       <p class="lead">Antes de propor qualquer mudança, olhamos para o mercado da Barra da Tijuca e para o cenário nacional de cirurgia facial e harmonização. Três achados sustentam esta reformulação:</p>
@@ -287,7 +431,10 @@
           <p>Já existe pelo menos um profissional na própria região investindo em conteúdo dedicado a esses procedimentos. O Dr. tem hoje um diferencial de reputação que ele não tem — mas isso é uma vantagem de tempo, não permanente.</p>
         </div>
       </div>
-      <h3 style="margin-top:48px;">Mapa de referência da região</h3>
+    </div>
+    <div class="wrap-wide page">
+      <div class="section-index">02 — O QUE A PESQUISA MOSTROU</div>
+      <h3>Mapa de referência da região</h3>
       <div class="comp-strip">
         <div class="comp-row"><span class="name">Consultório BucoBarra</span><span class="desc">Dedicado exclusivamente a cirurgia bucomaxilofacial</span></div>
         <div class="comp-row"><span class="name">Dr. Leonardo Pinto Monteiro</span><span class="desc">Mesmo endereço, também formado pela UFRJ</span></div>
@@ -299,7 +446,7 @@
   </section>
 
   <!-- 03 POSICIONAMENTO -->
-  <section class="dark">
+  <section class="dark page">
     <div class="wrap">
       <div class="section-index">03 — NOVA PROPOSTA DE POSICIONAMENTO</div>
       <h2>A referência em Cirurgia Facial de Alta Complexidade</h2>
@@ -314,7 +461,7 @@
   </section>
 
   <!-- 04 PÚBLICOS -->
-  <section>
+  <section class="page">
     <div class="wrap">
       <div class="section-index">04 — PARA QUEM ESTAMOS FALANDO</div>
       <h2>Dois públicos, uma só autoridade</h2>
@@ -339,7 +486,7 @@
   </section>
 
   <!-- 05 TOM -->
-  <section>
+  <section class="page">
     <div class="wrap">
       <div class="section-index">05 — MUDANÇA DE LINGUAGEM E TOM DE VOZ</div>
       <h2>Da urgência para a serenidade de quem já é referência</h2>
@@ -354,7 +501,7 @@
   </section>
 
   <!-- 06 PILARES -->
-  <section class="dark">
+  <section class="dark page">
     <div class="wrap-wide">
       <div class="section-index">06 — PILARES DE COMUNICAÇÃO</div>
       <h2>Quatro frentes, um só recado</h2>
@@ -370,26 +517,86 @@
 
   <!-- 07 CONCEITO VISUAL -->
   <section>
-    <div class="wrap">
+    <div class="wrap page">
       <div class="section-index">07 — CONCEITO VISUAL</div>
       <h2>Confiança clínica, sem parecer fria</h2>
       <div class="visual-cols">
         <div>
           <p class="lead">Uma paleta sóbria — tons profundos combinados a um acento quente — sinaliza autoridade sem exagero. Nada de cores frias e genéricas de "clínica", nem de apelo promocional.</p>
           <div class="swatch-row">
-            <div class="swatch" style="background:#14202B;"></div>
-            <div class="swatch" style="background:#2A4A61;"></div>
-            <div class="swatch" style="background:#B98B4E;"></div>
-            <div class="swatch" style="background:#F7F3EC; border:1px solid #E6DFD0;"></div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:#14202B;"></div>
+              <div class="swatch-label">Navy escuro<span class="hex">#14202B</span></div>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:#2A4A61;"></div>
+              <div class="swatch-label">Navy médio<span class="hex">#2A4A61</span></div>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:#B98B4E;"></div>
+              <div class="swatch-label">Dourado<span class="hex">#B98B4E</span></div>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch" style="background:#F7F3EC; border:1px solid #E6DFD0;"></div>
+              <div class="swatch-label">Cream<span class="hex">#F7F3EC</span></div>
+            </div>
           </div>
         </div>
         <div>
-          <h3>Fotografia</h3>
+          <h3>Tipografia</h3>
+          <p class="lead" style="font-size:14px;">Duas opções de par tipográfico, ambas já disponíveis na biblioteca padrão de fontes do Elementor (Google Fonts) — bastando selecionar pelo nome no painel, sem upload de arquivo.</p>
+          <div class="type-pairs">
+            <div class="type-pair">
+              <div class="option-lbl">Opção A</div>
+              <div class="type-sample">
+                <div class="display font-playfair">Playfair Display — títulos e destaques</div>
+                <div class="body font-lato">Lato — textos e interface</div>
+              </div>
+            </div>
+            <div class="type-pair">
+              <div class="option-lbl">Opção B</div>
+              <div class="type-sample">
+                <div class="display font-cormorant">Cormorant Garamond — títulos e destaques</div>
+                <div class="body font-worksans">Work Sans — textos e interface</div>
+              </div>
+            </div>
+          </div>
+          <p class="lead" style="font-size:14px; margin-top:14px;"><strong>Playfair Display</strong> e <strong>Cormorant Garamond</strong> são serifadas clássicas que aproximam o estilo do logotipo; <strong>Lato</strong> e <strong>Work Sans</strong> são sans-serif neutras de alta legibilidade, indicadas para corpo de texto e interface. Recomendação: Opção A (mais contraste entre título e corpo).</p>
+          <h3 style="margin-top:28px;">Fotografia</h3>
           <p class="lead">Real, não de banco de imagens — o consultório, o Dr., os bastidores. O material que já existe é o ponto de partida; a curadoria importa mais do que a quantidade.</p>
         </div>
       </div>
-
-      <h3 style="margin-top:48px; font-size:20px;">A nova página inicial, em quatro movimentos</h3>
+    </div>
+    <div class="wrap page">
+      <div class="section-index">07 — CONCEITO VISUAL</div>
+      <h3>Variações de gradiente</h3>
+      <p class="lead">Combinações derivadas da mesma paleta — nenhuma cor nova é introduzida, apenas transições entre os tons já definidos, para uso em fundos, botões e legibilidade de foto.</p>
+      <div class="gradient-row">
+        <div class="gradient-item">
+          <div class="gradient-swatch" style="background: linear-gradient(160deg, #14202B 0%, #2A4A61 75%);"></div>
+          <div class="gradient-label"><span class="name">Institucional</span><span class="use">Capas de site e Instagram, abertura de seções escuras</span><span class="css">linear-gradient(160deg, #14202B 0%, #2A4A61 75%)</span></div>
+        </div>
+        <div class="gradient-item">
+          <div class="gradient-swatch" style="background: radial-gradient(circle at 50% 20%, rgba(185,139,78,0.45) 0%, #14202B 60%);"></div>
+          <div class="gradient-label"><span class="name">Halo dourado</span><span class="use">Realce sutil atrás de citações ou CTAs em fundo escuro</span><span class="css">radial-gradient(circle at 50% 20%, rgba(185,139,78,.45) 0%, #14202B 60%)</span></div>
+        </div>
+        <div class="gradient-item">
+          <div class="gradient-swatch" style="background: linear-gradient(135deg, #B98B4E 0%, #8A6533 100%);"></div>
+          <div class="gradient-label"><span class="name">Botão / CTA</span><span class="use">Botões de ação, selos "Agendar avaliação"</span><span class="css">linear-gradient(135deg, #B98B4E 0%, #8A6533 100%)</span></div>
+        </div>
+        <div class="gradient-item">
+          <div class="gradient-swatch" style="background: linear-gradient(180deg, rgba(20,32,43,0) 0%, rgba(20,32,43,0.85) 100%);"></div>
+          <div class="gradient-label"><span class="name">Overlay de foto</span><span class="use">Legibilidade de texto sobre imagens — hero do Dr., capas de Reels</span><span class="css">linear-gradient(180deg, rgba(20,32,43,0) 0%, rgba(20,32,43,.85) 100%)</span></div>
+        </div>
+        <div class="gradient-item">
+          <div class="gradient-swatch" style="background: linear-gradient(180deg, #F7F3EC 0%, #FFFFFF 100%);"></div>
+          <div class="gradient-label"><span class="name">Fundo claro</span><span class="use">Seções claras do site, fundo de cards em destaque</span><span class="css">linear-gradient(180deg, #F7F3EC 0%, #FFFFFF 100%)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap page">
+      <div class="section-index">07 — CONCEITO VISUAL</div>
+      <h3>A nova página inicial, em quatro movimentos</h3>
       <div class="narrative-steps">
         <div class="n-step"><div class="n">01</div><div><h4>Abertura</h4><p>Apresenta o profissional pela autoridade, não por uma promoção. "Aqui está o especialista", não "aqui está uma oferta".</p></div></div>
         <div class="n-step"><div class="n">02</div><div><h4>Prova</h4><p>Depoimentos reais em primeira pessoa — não apenas a menção a estrelas em outra plataforma.</p></div></div>
@@ -400,7 +607,7 @@
   </section>
 
   <!-- 08 INSTAGRAM -->
-  <section>
+  <section class="page">
     <div class="wrap">
       <div class="section-index">08 — DIREÇÃO EDITORIAL DO INSTAGRAM</div>
       <h2>@gustavoboehmer</h2>
@@ -418,7 +625,7 @@
   </section>
 
   <!-- 09 DEIXANDO PRA TRÁS -->
-  <section>
+  <section class="page">
     <div class="wrap">
       <div class="section-index">09 — O QUE ESTAMOS DEIXANDO PARA TRÁS</div>
       <h2>Para que a mudança seja real, não um verniz novo</h2>
@@ -433,7 +640,7 @@
   </section>
 
   <!-- 10 O QUE VAMOS ENTREGAR -->
-  <section class="dark">
+  <section class="dark page">
     <div class="wrap-wide">
       <div class="section-index">10 — O QUE VAMOS CONSTRUIR NESTE TRIMESTRE</div>
       <h2>Três entregas, um único posicionamento</h2>
@@ -458,7 +665,7 @@
   </section>
 
   <!-- CLOSING -->
-  <div class="closing">
+  <div class="closing page">
     <div class="eyebrow on-dark">Fechamento</div>
     <p class="big">O Dr. não precisa <span class="gold">construir</span> uma reputação — já tem uma.<br>O que construímos agora é o <span class="gold">lugar próprio</span> para contá-la, com o foco certo.</p>
     <div class="sign">MP Marketing Performance Digital · Reformulação apresentada em Setembro de 2026</div>
