@@ -52,8 +52,13 @@
     color: var(--text-muted);
     font-size: 0.95rem;
   }
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
   a.link {
-    display: inline-block;
+    display: block;
     text-decoration: none;
     background: var(--accent);
     color: var(--bg-card);
@@ -67,8 +72,11 @@
 <body>
   <div class="card">
     <h1>vectralab.cloud</h1>
-    <p>Página inicial em construção.</p>
-    <a class="link" href="/cardapio/">Ver cardápio</a>
+    <p>Páginas publicadas</p>
+    <nav class="links">
+      <a class="link" href="/cardapio/">Cardápio nutricional</a>
+      <a class="link" href="/dr-gustavo-boehmer/">Reformulação Estratégica · Dr. Gustavo Boehmer</a>
+    </nav>
   </div>
 </body>
 </html>
